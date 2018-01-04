@@ -1,6 +1,7 @@
 import account
 from api import response, ERROR
 from authorization import epoch
+from datetime import datetime
 
 def handler(sender, receiver, amount):
     try:
@@ -28,7 +29,8 @@ def handler(sender, receiver, amount):
     transaction = {
         'sender' : sender,
         'receiver' : receiver,
-        'amount' : amount
+        'amount' : amount,
+        'timestamp' : str(datetime.now())
     }
 
     senderData['history'].append(transaction)
