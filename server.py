@@ -13,10 +13,6 @@ def bad_parameter (value, regex):
         return True
     return False
 
-@app.route('/')
-def root():
-    return 'Root'
-
 @app.route('/get_challenge')
 def get_challenge():
     account = request.args.get('account')
