@@ -86,7 +86,7 @@ def account_make_transfer():
 
     return handler(sender, receiver, amount)
 
-@app.route('/account_get_hitory', methods=['OPTIONS'])
+@app.route('/account_get_history', methods=['OPTIONS'])
 def account_get_history_options():
     return options_response()
 
