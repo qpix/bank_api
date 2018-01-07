@@ -13,6 +13,9 @@ def bad_parameter (value, regex):
         return True
     return False
 
+def options_response():
+    return '', 200, {'Access-Control-Allow-Origin':'*','Access-Control-Allow-Methods':'GET','Access-Control-Allow-Headers':'Authorization'}
+
 @app.route('/get_challenge')
 def get_challenge():
     account = request.args.get('account')
@@ -44,6 +47,10 @@ def get_token():
 
     return ERROR('The challenge response is not valid.')
 
+@app.route('/account_get_balance', methods=['OPTIONS'])
+def account_get_balance_options():
+    return options_response()
+
 @app.route('/account_get_balance')
 @authorize
 def account_get_balance():
@@ -54,6 +61,10 @@ def account_get_balance():
         return ERROR('The account parameter is either missing or has a bad format.')
 
     return handler(account)
+
+@app.route('/account_make_transfer', methods=['OPTIONS'])
+def account_make_transfer_options():
+    return options_response()
 
 @app.route('/account_make_transfer')
 @authorize
@@ -74,6 +85,10 @@ def account_make_transfer():
         return ERROR('The amount parameter is either missing or has a bad format.')
 
     return handler(sender, receiver, amount)
+
+@app.route('/account_get_hitory', methods=['OPTIONS'])
+def account_get_history_options():
+    return options_response()
 
 @app.route('/account_get_history')
 @authorize
