@@ -100,3 +100,6 @@ def account_get_history():
         return ERROR('The account parameter is either missing or has a bad format.')
 
     return handler(account)
+
+if __name__ == "__main__":
+    app.run(host='0.0.0.0', port=5000)
